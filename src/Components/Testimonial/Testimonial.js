@@ -12,7 +12,7 @@ const Testimonial = () => {
                     <h1 className=' text-2xl font-normal uppercase'>ehat our patients says</h1>
                 </div>
                 <div >
-                    <img style={{ width: 192 }} src={quote} alt="" />
+                    <img className='lg:w-48 w-24' src={quote} alt="" />
                 </div>
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-3 '>
