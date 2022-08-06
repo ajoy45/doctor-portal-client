@@ -8,6 +8,7 @@ import teeth from '../../assets/images/whitening.png';
 import DentalEx from './DentalEx/DentalEx';
 import Doctors from '../Doctors/Doctors';
 import Testimonial from '../Testimonial/Testimonial';
+import ContactUs from '../ContactUS/ContactUs';
 const Home = () => {
     const serviceTitles={
         title1:'Fluoride Treatment',
@@ -19,7 +20,8 @@ const Home = () => {
     }
 
     return (
-        <div className='px-12'>
+        <>
+         <div className='px-12'>
             <Banner></Banner>
             <Info></Info>
             <div className='mt-32 mb-12  '>
@@ -36,10 +38,10 @@ const Home = () => {
             <DentalEx></DentalEx>
             <Doctors></Doctors>
             <Testimonial></Testimonial>
-            
-            
-
         </div>
+        <ContactUs></ContactUs>
+        </>
+       
     );
 };
 

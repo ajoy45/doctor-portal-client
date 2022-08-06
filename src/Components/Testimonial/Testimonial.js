@@ -30,8 +30,8 @@ const Testimonial = () => {
                     </div>
 
                 </div>
-                <div class="card  bg-base-100 shadow-xl p-6">
-                    <div class="card-body text-center">
+                <div className="card  bg-base-100 shadow-xl p-6">
+                    <div className="card-body text-center">
 
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae voluptatem tenetur libero, tempore delectus, soluta dolorem sed ipsa ad quasi sunt nemo obcaecati quo magni! Magni dolores accusantium est rerum!</p>
                     </div>
@@ -43,24 +43,24 @@ const Testimonial = () => {
                         </div>
                     </div>
                 </div>
-                <div class="card  bg-base-100 shadow-xl p-6">
-                    <div class="card-body text-center">
+                <div className="card  bg-base-100 shadow-xl p-6" >
+        <div className="card-body text-center" >
 
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae voluptatem tenetur libero, tempore delectus, soluta dolorem sed ipsa ad quasi sunt nemo obcaecati quo magni! Magni dolores accusantium est rerum!</p>
-                    </div>
-                    <div className='flex justify-start items-center pl-6'>
-                        <img className="mask mask-circle w-16 rounded-full border-2 border-primary" src={people3} alt='' />
-                        <div className='pl-3'>
-                            <h1>Winson Henry</h1>
-                            <h3>California</h3>
-                        </div>
-                    </div>
-                </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae voluptatem tenetur libero, tempore delectus, soluta dolorem sed ipsa ad quasi sunt nemo obcaecati quo magni! Magni dolores accusantium est rerum!</p>
+                    </div >
+    <div className='flex justify-start items-center pl-6'>
+        <img className="mask mask-circle w-16 rounded-full border-2 border-primary" src={people3} alt='' />
+        <div className='pl-3'>
+            <h1>Winson Henry</h1>
+            <h3>California</h3>
+        </div>
+    </div>
+                </div >
 
 
-            </div>
+            </div >
 
-        </section>
+        </section >
     );
 };
 
