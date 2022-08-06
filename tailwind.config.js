@@ -6,7 +6,8 @@ module.exports = {
       backgroundImage: {
         "nature-light": "url('/src/assets/images/bg.png')",
         "nature-dark": "url('/src/assets/images/bg.png')",
-      }
+      },
+      
     },
   },
   daisyui: {
