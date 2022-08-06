@@ -1,6 +1,10 @@
 import React from 'react';
 import footer from '../../assets/images/footer.png'
 const Footer = () => {
+    const date=new Date()
+    const year= date.getFullYear()
+    const month=date.getMonth()
+    
     return (
         <footer style={{
             background: `url(${footer})`,
@@ -31,7 +35,7 @@ const Footer = () => {
                 </div>
             </div>
             <div >
-                <p className='text-center mt-24'>Copyright © 2022 - All right reserved by doctors portal</p>
+                <p className='text-center mt-24'>Copyright © {month}/{year} - All right reserved by doctors portal</p>
             </div>
         </footer>
     );
