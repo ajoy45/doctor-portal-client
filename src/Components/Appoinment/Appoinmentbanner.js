@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import chair from '../../assets/images/chair.png';
 import { DayPicker, ClassNames } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
-import { format } from 'date-fns';
+
 import bg from '../../assets/images/bg.png'
-const Appoinmentbanner = () => {
-    const [date, setDate] = useState(new Date());
-    let footer = <p >Please pick a day.</p>;
-    if (date) {
-        footer = <p className='text-primary font-bold'>You picked {format(date, 'PP')}.</p>;
-    }
+const Appoinmentbanner = ({date,setDate}) => {
     const classNames: ClassNames = {
-        
         head: 'custom-head'
       };
     return (
@@ -30,7 +24,7 @@ const Appoinmentbanner = () => {
                         mode="single"
                         selected={date}
                         onSelect={setDate}
-                        footer={footer}
+                        
                         classNames={classNames}
                         styles={{
                             caption: { color: 'red' }
