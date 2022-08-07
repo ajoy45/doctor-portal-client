@@ -12,7 +12,7 @@ const AvailabeService = ({date}) => {
     },[])
     return (
         <section>
-           <h1 className='text-primary text-xl font-bold text-center p-8'>Available Service on {format(date, 'PP')}</h1> 
+           <h1 className='text-primary text-xl font-bold text-center p-8 mt-11 uppercase '>Available Service on {format(date, 'PP')}</h1> 
            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-14'>
             {
                 services.map(service=><AvailableServiceDetails
