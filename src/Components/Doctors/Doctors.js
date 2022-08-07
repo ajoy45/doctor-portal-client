@@ -8,7 +8,7 @@ const Doctors = () => {
             background: `url(${appoinment})` 
           }} className='grid sm:grid-cols-1 md:grid-cols-2 justify-center items-center  mb-12 mt-56'>
             <div>
-               <img className='mt-[-100px]' src={doctor} alt="appoinment" />
+               <img className='mt-[-100px] hidden lg:block' src={doctor} alt="appoinment" />
             </div>
             <div className='px-12'>
                <h3 className='text-primary text-xl py-3'>Appointment</h3>
