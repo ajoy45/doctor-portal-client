@@ -1,7 +1,7 @@
 [
     {
     "_id":1,
-    "treatment":"Teeth Orthodontics",
+    "name":"Teeth Orthodontics",
     "slots":[
         "8.00 AM-8.30AM",
         "8.30 AM-9.00AM",
@@ -15,14 +15,14 @@
    },
     {
     "_id":2,
-    "treatment":"Cosmetic Dentistry",
+    "name":"Cosmetic Dentistry",
     "slots":[
        
      ]
    },
     {
     "_id":3,
-    "treatment":"Teeth Cleaning",
+    "name":"Teeth Cleaning",
     "slots":[
         "8.00 AM-8.30AM",
         "8.30 AM-9.00AM",
@@ -36,7 +36,7 @@
    },
     {
     "_id":4,
-    "treatment":"Teeth Orthodontics",
+    "name":"Teeth Orthodontics",
     "slots":[
         "8.00 AM-8.30AM",
         "8.30 AM-9.00AM",
@@ -50,7 +50,7 @@
    },
     {
     "_id":5,
-    "treatment":"Teeth Orthodontics",
+    "name":"Teeth Orthodontics",
     "slots":[
         "8.00 AM-8.30AM",
         "8.30 AM-9.00AM",
