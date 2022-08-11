@@ -6,6 +6,7 @@ import Appoinment from './Components/Appoinment/Appoinment';
 import ContactUs from './Components/ContactUS/ContactUs';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
+import SignUp from './Components/Login/SignUp';
 import Header from './Components/Shared/Header';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         <Route path="appoinment" element={<Appoinment />} />
         <Route path="contactus" element={<ContactUs />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<SignUp/>} />
+     
       </Routes>
       
     </div>

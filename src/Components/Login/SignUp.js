@@ -1,25 +1,30 @@
 import React from 'react';
-import './Login.css';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import auth from '../../../src/Firebase.init';
+import {  useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import auth from '../../Firebase.init';
 import { Link } from "react-router-dom";
-const Login = () => {
+
+const SignUp = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useSignInWithEmailAndPassword(auth);
-      if(gLoading||loading){
+      ] = useCreateUserWithEmailAndPassword(auth);
+      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+      if(gUser||user){
+        console.log(user,gUser)
+      }
+      if(gLoading||loading||updating){
         return <button className="btn loading">loading</button>
       }
       let errorMessage;
-    if(error||gError){
-        errorMessage= <span>{error.message}</span> 
+    if(error||gError||updateError){
+        errorMessage= <span>{error.message}||{gError.message}||{updateError.message}</span> 
     }
-    const handelSubmit=event=>{
+    const handelSubmit= async event=>{
         event.preventDefault()
+        const name=event.target.name.value;
         const email=event.target.email.value;
         const password=event.target.password.value;
         // this is email validation
@@ -45,12 +50,17 @@ const Login = () => {
             return false;
         }
         // this is email password signin
-        signInWithEmailAndPassword(email, password)
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({displayName:name})
     }
     return (
-        <div className='mx-auto w-96 login-container pt-7 pb-7 mt-10'>
-            <h1 className='text-center font-bold'>Login</h1>
+        <div className='mx-auto w-96 login-container pt-7 pb-7 mt-10 mb-6'>
+            <h1 className='text-center font-bold'>Sign Up</h1>
             <form onSubmit={handelSubmit} className='pl-10'>
+                <label className="label">
+                    <span className="label-text">Name</span>
+                </label>
+                <input type="text"name='name'required className="input input-bordered w-full max-w-xs" />
                 <label className="label">
                     <span className="label-text">Email</span>
                 </label>
@@ -58,15 +68,13 @@ const Login = () => {
                 <label className="label">
                     <span className="label-text">Password</span>
                 </label>
-                <input type="password"name='password'required className="input input-bordered w-full max-w-xs" />
-                <label className="label">
-                    <span className="label-text">Forgot Password?</span>
-                </label>
+                <input type="password"name='password'required className="input input-bordered w-full max-w-xs mb-4" />
+                
                 <p className='text-red-500 '>{errorMessage}</p>
-                <input type="submit" value="Login" className="input input-bordered w-full max-w-xs bg-accent text-white" />
+                <input type="submit" value="sign Up" className="input input-bordered w-full max-w-xs bg-accent text-white" />
                 
                 <div className="pl-8 mt-3">
-                    <span className="label-text ">New to Doctor portal?<Link to='/signup' className='text-primary'>Create New Account?</Link> </span>
+                    <span className="label-text ">Already have an account?<Link to ='/login'className='text-primary'>GO to Login?</Link> </span>
                 </div>
                 <div className="flex flex-col  w-4/5  border-opacity-50 pl-10">
                     <div className="divider">OR</div>
@@ -79,4 +87,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
