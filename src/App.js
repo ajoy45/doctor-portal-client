@@ -7,6 +7,7 @@ import ContactUs from './Components/ContactUS/ContactUs';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import SignUp from './Components/Login/SignUp';
+import RequireAuth from './Components/RequireAuth/RequireAuth';
 import Header from './Components/Shared/Header';
 
 function App() {
@@ -17,7 +18,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="appoinment" element={<Appoinment />} />
+        <Route path="appoinment" element={
+          <RequireAuth>
+            <Appoinment />
+          </RequireAuth>
+        } />
         <Route path="contactus" element={<ContactUs />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp/>} />

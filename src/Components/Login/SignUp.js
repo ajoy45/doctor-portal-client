@@ -1,19 +1,22 @@
 import React from 'react';
-import {  useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import {   useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate} from "react-router-dom";
 
 const SignUp = () => {
+    const navigate=useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-      if(gUser||user){
-        console.log(user,gUser)
+      if(user){
+       navigate('/login')
       }
       if(gLoading||loading||updating){
         return <button className="btn loading">loading</button>
@@ -22,6 +25,7 @@ const SignUp = () => {
     if(error||gError||updateError){
         errorMessage= <span>{error.message}||{gError.message}||{updateError.message}</span> 
     }
+    // 
     const handelSubmit= async event=>{
         event.preventDefault()
         const name=event.target.name.value;
@@ -52,6 +56,7 @@ const SignUp = () => {
         // this is email password signin
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({displayName:name})
+        
     }
     return (
         <div className='mx-auto w-96 login-container pt-7 pb-7 mt-10 mb-6'>

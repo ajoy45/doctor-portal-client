@@ -14,7 +14,7 @@ const AvailableServiceDetails = ({ service,setTreatment }) => {
         {/* <div className=" justify-start">
           <button   ></button>
         </div> */}
-        <label for="my-modal-6" className='btn  text-white bg-gradient-to-r from-primary to-secondary border-orange-50' disabled={slots.length === 0}onClick={()=>setTreatment(service)}>Book Appinment</label>
+        <label htmlFor="my-modal-6" className='btn  text-white bg-gradient-to-r from-primary to-secondary border-orange-50' disabled={slots.length === 0}onClick={()=>setTreatment(service)}>Book Appinment</label>
       </div>
     </div>
   );

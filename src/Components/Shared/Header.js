@@ -20,7 +20,7 @@ const Header = () => {
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/appoinment">Appoinment</Link></li>
                         <li><Link to="/contactus">Contact US</Link></li>
-                        {user?<li><button onClick={handelOut}>SignOut</button></li>:<li><Link to="/login">Login</Link></li>}
+                        {user?<li><button className='btn btn-ghost' onClick={handelOut}>SignOut</button></li>:<li><Link to="/login">Login</Link></li>}
                     </ul>
                 </div>
                 <Link to="/" className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
@@ -31,7 +31,7 @@ const Header = () => {
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/appoinment">Appoinment</Link></li>
                     <li><Link to="/contactus">Contact US</Link></li>
-                    {user?<li><button onClick={handelOut}>signOut</button></li>:<li><Link to="/login">Login</Link></li>}
+                    {user?<li><button className='btn btn-ghost' onClick={handelOut}>signOut</button></li>:<li><Link to="/login">Login</Link></li>}
                 </ul>
             </div>
 
