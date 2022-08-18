@@ -31,8 +31,17 @@ const Header = () => {
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/appoinment">Appoinment</Link></li>
                     <li><Link to="/contactus">Contact US</Link></li>
+                    {
+                        user&&<li><Link to="/dashboard">Dashboard</Link></li>
+                    }
                     {user?<li><button className='btn btn-ghost' onClick={handelOut}>signOut</button></li>:<li><Link to="/login">Login</Link></li>}
                 </ul>
+            </div>
+            <div className="navbar-end">
+            <label tabIndex="1" for="my-drawer-2" className="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+           
             </div>
 
         </div>

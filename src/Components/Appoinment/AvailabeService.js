@@ -1,39 +1,49 @@
 import { format } from 'date-fns';
-import React, { useEffect, useState } from 'react';
-import AvailableServiceDetails from './AvailableServiceDetails';
-import BookingModol from './BookingModol';
+import React, { useState, useEffect } from 'react';
+import BookingModal from './BookingModol';
+import AvailableServiceDetails from './AvailableServiceDetails'
+import { useQuery } from 'react-query';
 
+const AvailableAppointments = ({ date }) => {
+    // const [services, setServices] = useState([]);
+    const [treatment, setTreatment] = useState(null);
 
-const AvailabeService = ({date}) => {
-    const[services,setServices]=useState([]);
-    const[treatment,setTreatment]=useState(null)
-    // console.log(services)
-    useEffect(()=>{
-        fetch('http://localhost:5000/service')
-        .then(res=>res.json())
-        .then(data=>setServices(data))
-    },[])
+    const formattedDate = format(date, 'PP');
+    const { isLoading, error, data:services ,refetch} = useQuery(['available',formattedDate], () =>
+    fetch(`http://localhost:5000/available?date=${formattedDate}`).then(res =>
+      res.json()
+    )
+  )
+
+     if(isLoading){
+        return <button className="btn loading">loading</button>
+     }
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/available?date=${formattedDate}`)
+    //         .then(res => res.json())
+    //         .then(data => setServices(data));
+    // }, [formattedDate])
+
     return (
-        <section>
-           <h1 className='text-primary text-xl font-bold text-center p-8 mt-11 uppercase '>Available Service on {format(date, 'PP')}</h1> 
-           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-14'>
-            {
-                services.map(service=><AvailableServiceDetails
-                keys={service._id}
-                service={service}
+        <div className='my-10'>
+            <h4 className='text-xl text-secondary text-center my-12'>Available Appointments on {format(date, 'PP')}</h4>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                {
+                    services.map(service => <AvailableServiceDetails
+                        key={service._id}
+                        service={service}
+                        setTreatment={setTreatment}
+                    ></AvailableServiceDetails>)
+                }
+            </div>
+            {treatment && <BookingModal
+                date={date}
+                treatment={treatment}
                 setTreatment={setTreatment}
-                ></AvailableServiceDetails>)
-            }
-           </div>
-           {
-            treatment && <BookingModol 
-            treatment={treatment}
-            date={date}
-            setTreatment={setTreatment}
-            ></BookingModol>
-           }
-        </section>
+                refetch={refetch}
+            ></BookingModal>}
+        </div>
     );
 };
 
-export default AvailabeService;
+export default AvailableAppointments;
