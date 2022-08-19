@@ -14,6 +14,7 @@ const Dashboard = () => {
           {/* <!-- Sidebar content here --> */}
           <li><Link to='/dashboard'>My Appoinment</Link></li>
           <li><Link to='dashboard/myreview'>Review</Link></li>
+          <li><Link to='dashboard/users'>All Users</Link></li>
         </ul>
 
       </div>

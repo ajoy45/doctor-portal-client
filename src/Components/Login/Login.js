@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import './Login.css';
-import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import {  useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../src/Firebase.init';
 import { sendPasswordResetEmail } from "firebase/auth";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import UseToken from '../../Hooks/UseToken';
 const Login = () => {
-    const[user1]=useAuthState(auth)
+    // const[user1]=useAuthState(auth)
     const inputEl = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,12 +19,12 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-
+    const[token]=UseToken(user || gUser)
     useEffect(() => {
-        if (user || gUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, gUser, from, navigate])
+    }, [token,from, navigate])
 
     //  show loading
     if (gLoading || loading) {
@@ -67,22 +68,22 @@ const Login = () => {
         
 
     }
-    if(user1){
-        fetch('http://localhost:5000/login', {
-            method: 'POST',
-            body: JSON.stringify({
-               email:user1.email
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => response.json())
-            .then((data) =>{
-                localStorage.setItem('JSON_TOKEN',data.token)
-                console.log(data)
-            } );
-    }
+    // if(user1){
+    //     fetch('http://localhost:5000/login', {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //            email:user1.email
+    //         }),
+    //         headers: {
+    //             'Content-type': 'application/json; charset=UTF-8',
+    //         },
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) =>{
+    //             localStorage.setItem('JSON_TOKEN',data.token)
+    //             console.log(data)
+    //         } );
+    // }
 
     // send emaill for update password
     const getEmail = () => {

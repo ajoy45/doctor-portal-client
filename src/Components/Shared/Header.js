@@ -7,6 +7,7 @@ const Header = () => {
     const[user]=useAuthState(auth)
     const handelOut=()=>{
         signOut(auth);
+        localStorage.removeItem('JSON_TOKEN')
     }
     return (
         <div className="navbar bg-base-100 ">

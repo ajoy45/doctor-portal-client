@@ -5,7 +5,7 @@ import AvailabeService from './AvailabeService';
 
 const Appoinment = () => {
     const [date, setDate] = useState(new Date());
-    console.log(date)
+    // console.log(date)
     return (
         <div>
             <Appoinmentbanner date={date} setDate={setDate}></Appoinmentbanner>

@@ -2,6 +2,7 @@ import React from 'react';
 import {   useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
 import { Link, Navigate, useLocation, useNavigate} from "react-router-dom";
+import UseToken from '../../Hooks/UseToken';
 
 const SignUp = () => {
     const navigate=useNavigate()
@@ -14,9 +15,13 @@ const SignUp = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
+
       const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-      if(user){
-       navigate('/login')
+
+      const[token]=UseToken(user||gUser);
+
+      if(token){
+        navigate(from, { replace: true });
       }
       if(gLoading||loading||updating){
         return <button className="btn loading">loading</button>
