@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './Login.css';
-import {  useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../src/Firebase.init';
 import { sendPasswordResetEmail } from "firebase/auth";
 
@@ -19,12 +19,12 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const[token]=UseToken(user || gUser)
+    const [token] = UseToken(user || gUser)
     useEffect(() => {
         if (token) {
             navigate(from, { replace: true });
         }
-    }, [token,from, navigate])
+    }, [token, from, navigate])
 
     //  show loading
     if (gLoading || loading) {
@@ -65,11 +65,11 @@ const Login = () => {
         }
         // this is email password signin
         signInWithEmailAndPassword(email, password)
-        
+
 
     }
     // if(user1){
-    //     fetch('http://localhost:5000/login', {
+    //     fetch('https://serene-scrubland-02767.herokuapp.com/login', {
     //         method: 'POST',
     //         body: JSON.stringify({
     //            email:user1.email
